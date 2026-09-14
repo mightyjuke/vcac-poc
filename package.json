@@ -1,0 +1,7 @@
+{
+  "name": "vcac-poc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static VCAC website design preview",
+  "scripts": { "dev": "node server.mjs" }
+}

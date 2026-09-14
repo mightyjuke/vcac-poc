@@ -1,0 +1,81 @@
+/* Readability pass: retain The7 palette and family, enlarge text and touch targets. */
+:root{font-size:100%;--muted:#555555}
+body{font-size:1.25rem;line-height:1.65}
+p,dd{text-wrap:pretty}
+.language-picker{display:flex;justify-content:flex-end;align-items:center;gap:6px;padding:8px 5%;background:#f5f5f5;border-bottom:1px solid #d5d5d5;color:#333}
+.language-picker button{font-family:inherit;font-size:1.125rem;line-height:1.5;min-height:48px;min-width:64px;padding:8px 14px;border:2px solid transparent;border-radius:4px;background:transparent;color:#2d5c88}
+.language-picker button[aria-pressed="true"]{background:#2d5c88;color:white;font-weight:700;text-decoration:underline;text-underline-offset:5px}
+.language-picker button:hover{border-color:#2d5c88}
+.language-picker button:focus-visible{outline:3px solid #0e4d87;outline-offset:3px}
+.header{height:auto;min-height:100px;gap:20px;padding-block:18px;flex-wrap:wrap}
+.brand strong{font-size:2rem}
+.brand small{font-size:1rem;letter-spacing:.025em;line-height:1.4}
+.brand img{width:40px;height:48px}
+.header nav{font-size:1.125rem}
+.visit-link{display:inline-flex;align-items:center;min-height:48px}
+.hero-copy{padding-top:64px;padding-bottom:64px}
+.eyebrow,.hero-copy .eyebrow{font-size:1.125rem;letter-spacing:.04em;line-height:1.5}
+.hero h1{font-size:clamp(2.125rem,4.2vw,3.5rem);line-height:1.2}
+.hero .intro{font-size:1.375rem;line-height:1.65;max-width:58ch}
+.hero .address{font-size:1.125rem;line-height:1.6}
+.button,.hero .button,.text-link{font-size:1.125rem;min-height:52px;line-height:1.5}
+.hero .button{padding:14px 24px}
+.hero .services{grid-template-columns:1fr 1fr 1.3fr 1fr;gap:20px;padding-block:30px}
+.service-heading>span:last-child{font-size:1.25rem;line-height:1.5}
+.services a{min-width:0}
+.services a>span:first-child,.service-language{font-size:1.125rem;line-height:1.5}
+.services strong{font-size:1.75rem;line-height:1.5;letter-spacing:0;font-variant-numeric:tabular-nums}
+.services strong small{font-size:1.125rem}
+.visit{gap:8%;padding:80px 7%}
+.visit h2{font-size:clamp(2.25rem,4.5vw,3.5rem);line-height:1.2}
+.visit p{font-size:1.25rem;line-height:1.7}
+.visit .eyebrow{font-size:1.125rem;color:#333}
+.visit-details h3{font-size:1.75rem;line-height:1.4}
+.visit-details dl div{grid-template-columns:1fr;gap:6px;font-size:1.25rem;line-height:1.65}
+.visit-details dt{font-weight:700;color:#333}
+.visit-details dd{overflow-wrap:anywhere}
+footer{font-size:1.125rem;flex-wrap:wrap;gap:24px}
+.footer-brand{font-size:1.75rem}
+.footer-brand span{font-size:1rem;letter-spacing:.025em;display:block;margin-left:0}
+footer small{font-size:1.125rem;line-height:1.5}
+:lang(zh-Hant){font-family:'Microsoft JhengHei','PingFang TC',sans-serif}
+:lang(zh-Hans){font-family:'Microsoft YaHei','PingFang SC',sans-serif}
+html:not([lang="en"]) h1,html:not([lang="en"]) h2,html:not([lang="en"]) h3{font-family:inherit;line-height:1.45}
+html:not([lang="en"]) .eyebrow{letter-spacing:0}
+@media(max-width:1050px){.hero .services{grid-template-columns:repeat(3,minmax(0,1fr))}.service-heading{grid-column:1/-1;flex-direction:row;justify-content:space-between}.services a{padding-left:0;border-left:0}}
+@media(max-width:760px){
+.language-picker{justify-content:center;padding:8px 4%;gap:4px}
+.header{min-height:90px;padding:16px 6%;gap:12px}
+.brand{gap:10px}.brand small{font-size:1rem}.header nav{font-size:1.125rem}
+.hero-copy{padding:32px 6% 38px}
+.hero h1{font-size:clamp(2rem,8.1vw,2.75rem);margin:20px 0}
+.hero .intro{font-size:1.25rem}
+.hero .address{font-size:1.125rem}
+.hero .services{display:block;padding:0 6%}
+.hero .service-heading{padding:24px 0;display:block}
+.service-heading>span:last-child{display:block;margin-top:8px}
+.services a{display:grid;grid-template-columns:1fr;gap:6px;padding:22px 0;border-top:1px solid #d5d5d5}
+.services strong{text-align:left;font-size:1.875rem}
+.services a>span:first-child,.service-language{font-size:1.125rem}
+.services a>span:first-child{color:#333;font-weight:700}
+.visit{padding:56px 6%;gap:40px}
+.visit-details dl div{font-size:1.25rem;grid-template-columns:1fr}
+.visit p{font-size:1.25rem}
+footer{padding:30px 6%;font-size:1.125rem}
+}
+@media(max-width:380px){.header{align-items:flex-start}.header nav{width:100%}.hero-actions .button{width:100%}}
+/* Keep Simplified Chinese at its native regular weight; size carries hierarchy. */
+html[lang="zh-Hans"] h1,html[lang="zh-Hans"] h2,html[lang="zh-Hans"] h3,
+html[lang="zh-Hans"] .eyebrow,html[lang="zh-Hans"] .button,
+html[lang="zh-Hans"] .header nav,html[lang="zh-Hans"] .visit-details dt,
+html[lang="zh-Hans"] .services a>span:first-child,html[lang="zh-Hans"] .text-link,
+html[lang="zh-Hans"] .language-picker button{font-weight:400;font-synthesis:none}
+.services strong small{white-space:nowrap}
+/* Full church name in the header, including at narrow widths. */
+.brand{max-width:100%;min-width:0}
+.brand>span{min-width:0}
+.brand img{flex-shrink:0}
+.brand strong{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;font-size:1.75rem;font-weight:400;line-height:1.4;letter-spacing:0;overflow-wrap:anywhere}
+@media(max-width:760px){.brand strong{font-size:1.5rem}.brand small{margin-top:4px}}
+/* Restore the acronym; the full Chinese church name belongs in the subtitle. */
+.brand strong{font-family:Questrial,Helvetica,Arial,Verdana,sans-serif;font-size:2rem;font-weight:700;line-height:1;letter-spacing:.04em}
