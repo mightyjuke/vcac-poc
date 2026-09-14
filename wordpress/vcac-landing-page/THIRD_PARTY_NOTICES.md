@@ -2,7 +2,7 @@
 
 ## Questrial
 
-File: `assets/questrial-regular.ttf`
+File: `site/assets/questrial-regular.ttf`
 
 Copyright 2011 The Questrial Project Authors (https://github.com/googlefonts/questrial).
 
@@ -12,8 +12,7 @@ The font was obtained through Google Fonts: https://fonts.googleapis.com/css?fam
 
 ## VCAC media and branding
 
-- `assets/VCAC-cover-V5.mp4`: full clip supplied for the VCAC proof of concept.
-- `assets/congregation.jpg`: edited exterior photograph of VCAC Knight Street Church, supplied for this project.
-- `assets/logo.png`: existing public VCAC logo asset.
+- `site/assets/congregation.jpg`: edited exterior photograph of VCAC Knight Street Church, supplied for this project.
+- `site/assets/logo.png`: existing public VCAC logo asset.
 
 These materials are separate from the font license. No general reuse permission is granted here for church media or branding.
