@@ -2,7 +2,7 @@
 /**
  * Plugin Name: VCAC Landing Page
  * Description: An opt-in standalone page template serving the locally maintained VCAC landing page.
- * Version: 0.2.0
+ * Version: 0.2.1
  * Requires at least: 6.0
  * Requires PHP: 7.4
  */
@@ -149,7 +149,7 @@ function render() {
     $html = substr($html, strlen($guard));
     $base = plugin_dir_url(__FILE__) . 'site/';
     $manifest = json_decode(file_get_contents(__DIR__ . '/build-manifest.json'), true);
-    $version = isset($manifest['build']) ? $manifest['build'] : '0.2.0';
+    $version = isset($manifest['build']) ? $manifest['build'] : '0.2.1';
 
     $video_id = absint(get_post_meta(get_queried_object_id(), VIDEO_META_KEY, true));
     $video_url = $video_id && 0 === strpos((string) get_post_mime_type($video_id), 'video/')
@@ -187,6 +187,9 @@ function render() {
 
     // WordPress metadata precedes the landing-page CSS so its design remains last.
     $html = str_replace('<head>', '<head>' . $head, $html);
+    // Download Manager prints an unused modal even without its scripts/styles.
+    // Hide it on this standalone template to prevent 750px mobile overflow.
+    $html = str_replace('</head>', '<style id="vcac-template-compatibility">#wpdm-popup-link{display:none!important}</style></head>', $html);
     $html = str_replace('<body>', '<body>' . $body_open, $html);
     $html = str_replace('</body>', $footer . '</body>', $html);
     echo $html; // Trusted, versioned local HTML; never evaluates PHP or editor content.
