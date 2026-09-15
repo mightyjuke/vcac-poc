@@ -2,7 +2,7 @@
 /**
  * Plugin Name: VCAC Landing Page
  * Description: An opt-in standalone page template serving the locally maintained VCAC landing page.
- * Version: 0.4.6
+ * Version: 0.4.7
  * Requires at least: 6.0
  * Requires PHP: 7.4
  */
@@ -41,12 +41,6 @@ add_filter('template_include', function ($template) {
     $file = __DIR__ . '/page-template.php';
     return is_readable(__DIR__ . '/site/document.php') ? $file : $template;
 }, 99);
-
-add_filter('query_vars', function ($vars) {
-    $vars[] = 'vcac_view';
-    $vars[] = 'vcac_lang';
-    return $vars;
-});
 
 add_action('template_redirect', function () {
     if (!selected_page() || post_password_required()) {

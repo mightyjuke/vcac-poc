@@ -29,8 +29,17 @@ function setLanguage(language, announce = true, remember = true) {
   if (announce) document.querySelector('#language-status').textContent = copy.status;
   if (remember) {
     try { localStorage.setItem('vcac-display-language', language); } catch { /* Works without storage too. */ }
-    try { const url = new URL(location.href); url.searchParams.set('vcac_lang',language); history.replaceState(null,'',url); } catch { /* Language still works without history. */ }
   }
+  // Older builds exposed the display choice as a WordPress query variable.
+  // Read those existing links once, then keep the preference in local storage
+  // so a reload cannot change WordPress's front-page query.
+  try {
+    const url = new URL(location.href);
+    if (url.searchParams.has('vcac_lang')) {
+      url.searchParams.delete('vcac_lang');
+      history.replaceState(history.state,'',url);
+    }
+  } catch { /* Language still works without history. */ }
   document.dispatchEvent(new CustomEvent('vcac:language', {detail:{language}}));
 }
 document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language)));
@@ -56,4 +65,5 @@ function detectBrowserLanguage() {
 let savedLanguage = null;
 try { savedLanguage = localStorage.getItem('vcac-display-language'); } catch { /* Detect from the browser instead. */ }
 const requestedLanguage = new URLSearchParams(location.search).get('vcac_lang');
-setLanguage(Object.hasOwn(translations, requestedLanguage) ? requestedLanguage : Object.hasOwn(translations, savedLanguage) ? savedLanguage : detectBrowserLanguage(), false, false);
+const hasRequestedLanguage = Object.hasOwn(translations, requestedLanguage);
+setLanguage(hasRequestedLanguage ? requestedLanguage : Object.hasOwn(translations, savedLanguage) ? savedLanguage : detectBrowserLanguage(), false, hasRequestedLanguage);

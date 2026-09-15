@@ -1,6 +1,8 @@
-# VCAC Landing Page 0.4.6
+# VCAC Landing Page 0.4.7
 
-0.4.6 fixes the mobile hero media frame. The 16:9 height is now calculated from the landing-page width instead of the browser viewport, both the fallback image and video fill the same frame, and the fallback is hidden once playback begins. This prevents the church-building fallback from leaking around a playing video.
+0.4.7 fixes homepage refreshes after choosing a display language. The language picker now remembers the choice in browser storage without registering or adding `vcac_lang` as a WordPress query variable. Existing `?vcac_lang=en`, `?vcac_lang=zh-Hant`, and `?vcac_lang=zh-Hans` links are still read once for compatibility, then cleaned from the address bar after the landing page loads. Community-directory links retain only their `vcac_view=community` state.
+
+It retains the 0.4.6 mobile hero fix. The 16:9 height is calculated from the landing-page width, both the fallback image and video fill the same frame, and the fallback is hidden once playback begins.
 
 It retains the 0.4.5 semi-transparent, fixed back-to-top control. It appears after scrolling beyond the opening screen, uses a non-emoji SVG arrow, meets the 48px touch-target requirement, supports all three display languages, respects reduced-motion preferences, and is omitted when printing.
 
@@ -12,8 +14,8 @@ One plugin provides the landing-page template, community directory, and ministry
 
 ## Upgrade for a staging preview
 
-1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.6.zip and replace the existing VCAC Landing Page plugin.
-2. **Network Activate VCAC Landing Page.** Version 0.4.6 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
+1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.7.zip and replace the existing VCAC Landing Page plugin.
+2. **Network Activate VCAC Landing Page.** Version 0.4.7 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
 3. On the main site, open **Settings → VCAC Content Feed**. Confirm English → English site, Traditional Chinese → Cantonese, Simplified Chinese → Mandarin. Defaults detect site paths, not assumed numeric IDs. Save only if the mapping needs changing.
 4. Preview the existing separate page assigned the **VCAC Landing Page** template. Its selected Media Library video remains selected; the church-building image remains the default fallback. No MP4 is in the ZIP.
 5. Publish a test listing on a ministry staging site as below, then refresh the landing preview. Test each language and the directory. A homepage rollout needs a separate team decision.
@@ -53,7 +55,7 @@ Only published, unprotected, explicitly opted-in items from active public source
 
 ## Languages and navigation
 
-First visit: browser language chooses English, Traditional Chinese or Simplified Chinese. A manual selection is remembered. An explicit vcac_lang=en, zh-Hant or zh-Hans URL takes priority. Changing language updates the community feed, latest updates and ministry destination together. Permanent ministry shortcuts stay Cantonese → English → Mandarin.
+First visit: browser language chooses English, Traditional Chinese or Simplified Chinese. A manual selection is remembered. An older explicit `vcac_lang=en`, `zh-Hant` or `zh-Hans` link takes priority, saves that choice, and is then cleaned from the address bar. Changing language updates the community feed, latest updates and ministry destination together. Permanent ministry shortcuts stay Cantonese → English → Mandarin.
 
 Display language supplies a default ministry choice; it is not an automatic translation service. Shared records preserve their actual language. No-JavaScript visitors retain ministry links; dynamic cards and language switching require JavaScript.
 

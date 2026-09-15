@@ -93,8 +93,8 @@
     const visitor=document.querySelector('#visit .button'); const visitorUrl=safeUrl(source.visitors); if(visitor){visitor.hidden=!visitorUrl;if(visitorUrl)visitor.href=visitorUrl;}
     document.querySelectorAll('[data-ministry]').forEach(link=>{ const url=safeUrl(sourceFor(link.dataset.ministry).home); link.hidden=!url;if(url)link.href=url; });
     const serviceLocales=['zh-Hant','en','zh-Hans']; document.querySelectorAll('.services>a').forEach((link,i)=>{const url=safeUrl(sourceFor(serviceLocales[i]).home);if(url)link.href=url;else link.removeAttribute('href');});
-    const allUrl=new URL(location.href); allUrl.searchParams.set('vcac_view','community'); allUrl.searchParams.set('vcac_lang',language); allUrl.hash='community';
-    const backUrl=new URL(location.href); backUrl.searchParams.delete('vcac_view'); backUrl.searchParams.set('vcac_lang',language); backUrl.hash='top';
+    const allUrl=new URL(location.href); allUrl.searchParams.set('vcac_view','community'); allUrl.searchParams.delete('vcac_lang'); allUrl.hash='community';
+    const backUrl=new URL(location.href); backUrl.searchParams.delete('vcac_view'); backUrl.searchParams.delete('vcac_lang'); backUrl.hash='top';
     setLink('community-all',allUrl.href); setLink('community-back',backUrl.href);
     if(directory){
       document.querySelectorAll('.brand,.footer-brand').forEach(link=>link.href=backUrl.href);
