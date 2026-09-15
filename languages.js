@@ -34,6 +34,7 @@ function detectBrowserLanguage() {
   const preferences = navigator.languages?.length ? navigator.languages : [navigator.language || 'en'];
   for (const preference of preferences) {
     const tag = String(preference).replace(/_/g, '-').toLowerCase();
+    if (tag === 'en' || tag.startsWith('en-')) return 'en';
     if (tag.startsWith('yue') || /^(zh|cmn)(-|$)/.test(tag)) {
       if (/(^|-)(hant|hk|tw|mo)(-|$)/.test(tag) || tag.startsWith('yue')) return 'zh-Hant';
       if (/(^|-)(hans|cn|sg)(-|$)/.test(tag)) return 'zh-Hans';
