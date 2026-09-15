@@ -4,7 +4,7 @@ namespace VCAC\LandingPage;
 
 defined('ABSPATH') || exit;
 
-const FEED_VERSION = '0.4.1';
+const FEED_VERSION = '0.4.2';
 const FEED_SOURCE_OPTION = 'vcac_feed_source_sites';
 const LISTING_META_KEY = '_vcac_listing';
 const AUDIENCE_META_KEY = '_vcac_audience';
@@ -445,6 +445,10 @@ function feed_records_for_site($site_id, $locale, $details, $now) {
         foreach (array('community', 'update') as $listing) {
             $query = new \WP_Query(array(
                 'post_type' => array('post', 'mec-events'),
+                // Source-site mapping already chooses the ministry/language.
+                // Polylang on the main site otherwise filters this mixed query
+                // by its language taxonomy, even on an untranslated ministry.
+                'lang' => '',
                 'post_status' => 'publish',
                 'has_password' => false,
                 'posts_per_page' => FEED_QUERY_LIMIT,
