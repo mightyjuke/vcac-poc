@@ -2,7 +2,7 @@
 /**
  * Plugin Name: VCAC Landing Page
  * Description: An opt-in standalone page template serving the locally maintained VCAC landing page.
- * Version: 0.4.2
+ * Version: 0.4.3
  * Requires at least: 6.0
  * Requires PHP: 7.4
  */

@@ -4,7 +4,7 @@ namespace VCAC\LandingPage;
 
 defined('ABSPATH') || exit;
 
-const FEED_VERSION = '0.4.2';
+const FEED_VERSION = '0.4.3';
 const FEED_SOURCE_OPTION = 'vcac_feed_source_sites';
 const LISTING_META_KEY = '_vcac_listing';
 const AUDIENCE_META_KEY = '_vcac_audience';

@@ -48,18 +48,24 @@
     const url = safeUrl(source);
     if (url) { const link = element('a','',label); link.href=url; target.append(link); }
   }
-  function card(item,language,labels) {
-    const article = element('article','community-card');
+  function card(item,language,labels,isUpdate=false) {
+    const article = element('article',isUpdate?'community-card update-card':'community-card');
     const imageUrl = safeUrl(item.image);
     if (imageUrl) {
-      const img = element('img'); img.src=imageUrl; img.alt=item.imageAlt || ''; img.loading='lazy'; img.width=600; img.height=400;
-      img.addEventListener('error',()=>img.remove(),{once:true}); article.append(img);
+      const media=element('div','card-media');
+      const img = element('img'); img.src=imageUrl; img.alt=item.imageAlt || ''; img.loading='lazy'; img.decoding='async'; img.width=600; img.height=338;
+      img.addEventListener('error',()=>media.remove(),{once:true}); media.append(img); article.append(media);
     }
     const body = element('div','card-content');
-    const status = item.status==='full' ? labels.full : item.kind==='programme' ? labels.ongoing : '';
+    const status = isUpdate ? '' : item.status==='full' ? labels.full : item.kind==='programme' ? labels.ongoing : '';
     if(status) body.append(element('span','feed-badge',status));
-    const schedule = item.start ? dateText(item.start,language,true) : item.schedule;
-    if(schedule) body.append(element('p','card-meta',schedule));
+    const timestamp=isUpdate?item.published:item.start;
+    const schedule=timestamp?dateText(timestamp,language,!isUpdate):isUpdate?'':item.schedule;
+    if(schedule) {
+      const meta=element(timestamp?'time':'p','card-meta',schedule);
+      if(timestamp) meta.dateTime=new Date(Number(timestamp)*1000).toISOString();
+      body.append(meta);
+    }
     const heading=element('h3','',item.title); heading.lang=item.language || language; body.append(heading);
     if(item.summary) { const summary=element('p','',item.summary); summary.lang=item.language || language; body.append(summary); }
     if(item.language && item.language!==language) body.append(element('p','source-note',`${labels.source} ${labels.languages[item.language] || item.language}`));
@@ -75,12 +81,7 @@
     const filtered=community.filter(item=>filter==='all'||item.kind===filter);
     const cards=document.getElementById('community-cards'); cards.replaceChildren(...(directory?filtered:community.slice(0,3)).map(item=>card(item,language,labels)));
     const updates=available ? data.updates.filter(item=>item && item.title && safeUrl(item.url)).slice(0,3) : [];
-    document.getElementById('update-list').replaceChildren(...updates.map(item=>{
-      const row=element('article','update-row'); const time=element('time','',dateText(item.published,language));
-      if(item.published>0) time.dateTime=new Date(item.published*1000).toISOString();
-      const body=element('div'); const heading=element('h3'); const link=element('a','',item.title); link.href=safeUrl(item.url); heading.append(link); body.append(heading);
-      if(item.summary) body.append(element('p','',item.summary)); row.append(time,body); return row;
-    }));
+    document.getElementById('update-list').replaceChildren(...updates.map(item=>card(item,language,labels,true)));
     const failed=!available || data.status==='unavailable'; const partial=data?.status==='partial';
     addStatus('community-status',failed||partial?labels.unavailable:!(directory?filtered:community).length?labels.emptyCommunity:'',source.events,labels.events);
     addStatus('updates-status',failed||partial?labels.unavailable:!updates.length?labels.emptyUpdates:'',source.home,labels.visit);

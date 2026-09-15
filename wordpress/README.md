@@ -1,18 +1,20 @@
-# VCAC Landing Page 0.4.2
+# VCAC Landing Page 0.4.3
 
-0.4.2 fixes ministry listings disappearing when Polylang is active on the main landing site but inactive on a ministry site. Feed queries explicitly disable Polylang's current-language constraint because the configured source site already determines the language. Other WordPress query filters and existing eligibility checks remain enabled. No post translations or remote settings need changing.
+This release adds matching image cards for Community Services & Events and Latest Updates: three columns on desktop, two on tablets, one on phones; rounded white cards, subtle shadows, and larger readable text. Featured images are reused without cropping posters. Missing images use a text-only card.
+
+It also retains the 0.4.2 fix for ministry listings disappearing when Polylang is active on the main landing site but inactive on a ministry site. Feed queries explicitly disable Polylang's current-language constraint because the configured source site already determines the language. Other WordPress query filters and existing eligibility checks remain enabled. No post translations or remote settings need changing.
 
 One plugin provides the landing-page template, community directory, and ministry publishing controls. The active theme remains The7. Activation does not create or remove pages, change the homepage, import content, or alter Polylang.
 
 ## Upgrade for a staging preview
 
-1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.2.zip and replace the existing VCAC Landing Page plugin.
-2. **Network Activate VCAC Landing Page.** Version 0.4.2 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
+1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.3.zip and replace the existing VCAC Landing Page plugin.
+2. **Network Activate VCAC Landing Page.** Version 0.4.3 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
 3. On the main site, open **Settings → VCAC Content Feed**. Confirm English → English site, Traditional Chinese → Cantonese, Simplified Chinese → Mandarin. Defaults detect site paths, not assumed numeric IDs. Save only if the mapping needs changing.
 4. Preview the existing separate page assigned the **VCAC Landing Page** template. Its selected Media Library video remains selected; the church-building image remains the default fallback. No MP4 is in the ZIP.
 5. Publish a test listing on a ministry staging site as below, then refresh the landing preview. Test each language and the directory. A homepage rollout needs a separate team decision.
 
-The existing Community Services & Events page is not replaced. “View all opportunities” opens this landing template in directory mode (?vcac_view=community), using the same feed. Changing existing community-page navigation remains a separate step.
+The existing Community Services & Events page is not replaced. “View all events” opens this landing template in directory mode (?vcac_view=community), using the same feed. Changing existing community-page navigation remains a separate step.
 
 ## Staff: publish once in your ministry
 
