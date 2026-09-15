@@ -1,0 +1,9 @@
+{
+  "preferredVersions": { "php": "8.2", "wp": "7.0.4" },
+  "steps": [
+    { "step": "enableMultisite" },
+    { "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; require_once ABSPATH.'wp-admin/includes/plugin.php'; activate_plugin('modern-events-calendar-lite/modern-events-calendar-lite.php','',true); activate_plugin('vcac-landing-page/vcac-landing-page.php','',true); activate_plugin('polylang/polylang.php');" },
+    { "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; $model=new PLL_Model(new WP_Syntex\\Polylang\\Options\\Options()); $language=$model->add_language(array('name'=>'English','slug'=>'en','locale'=>'en_US','rtl'=>0,'term_group'=>0)); if(is_wp_error($language)) throw new Exception($language->get_error_message());" },
+    { "step": "runPHP", "code": "<?php register_shutdown_function(function(){file_put_contents('/test-output/polylang-shutdown.json',json_encode(error_get_last()));}); require '/vcac-tests/polylang-mec.php';" }
+  ]
+}
