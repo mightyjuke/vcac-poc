@@ -95,7 +95,7 @@
     if(directory){
       document.querySelectorAll('.brand,.footer-brand').forEach(link=>link.href=backUrl.href);
       const visitUrl=new URL(backUrl);visitUrl.hash='visit';
-      document.querySelector('.visit-link').href=visitUrl.href;
+      const visitLink=document.querySelector('.visit-link');if(visitLink)visitLink.href=visitUrl.href;
       document.getElementById('community-title').setAttribute('aria-level','1');
     }
     document.getElementById('community-all').hidden=directory;

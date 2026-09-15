@@ -23,7 +23,8 @@ function setLanguage(language, announce = true, remember = true) {
   document.querySelectorAll('[data-i18n-html]').forEach(el => el.innerHTML = copy[el.dataset.i18nHtml] ?? english[el.dataset.i18nHtml]);
   document.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === language)));
   document.querySelector('.brand').setAttribute('aria-label', copy.homeLabel);
-  document.querySelector('.header nav').setAttribute('aria-label', copy.navigation);
+  const headerNavigation = document.querySelector('.header nav');
+  if (headerNavigation) headerNavigation.setAttribute('aria-label', copy.navigation);
   document.querySelector('.language-picker').setAttribute('aria-label', copy.languageLabel);
   if (announce) document.querySelector('#language-status').textContent = copy.status;
   if (remember) {

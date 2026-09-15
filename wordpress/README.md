@@ -1,11 +1,11 @@
-# VCAC Landing Page 0.4.0
+# VCAC Landing Page 0.4.1
 
 One plugin provides the landing-page template, community directory, and ministry publishing controls. The active theme remains The7. Activation does not create or remove pages, change the homepage, import content, or alter Polylang.
 
 ## Upgrade for a staging preview
 
-1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.0.zip and replace the existing VCAC Landing Page plugin.
-2. **Network Activate VCAC Landing Page.** Version 0.4.0 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
+1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.1.zip and replace the existing VCAC Landing Page plugin.
+2. **Network Activate VCAC Landing Page.** Version 0.4.1 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
 3. On the main site, open **Settings → VCAC Content Feed**. Confirm English → English site, Traditional Chinese → Cantonese, Simplified Chinese → Mandarin. Defaults detect site paths, not assumed numeric IDs. Save only if the mapping needs changing.
 4. Preview the existing separate page assigned the **VCAC Landing Page** template. Its selected Media Library video remains selected; the church-building image remains the default fallback. No MP4 is in the ZIP.
 5. Publish a test listing on a ministry staging site as below, then refresh the landing preview. Test each language and the directory. A homepage rollout needs a separate team decision.
