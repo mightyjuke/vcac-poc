@@ -30,3 +30,11 @@ if (heroStage && heroVideo && heroVideo.dataset.src !== '') {
   document.addEventListener('visibilitychange', syncHeroPlayback);
 }
 
+const backToTop = document.querySelector('.back-to-top');
+if (backToTop) {
+  const updateBackToTop = () => backToTop.classList.toggle('is-visible', window.scrollY > Math.max(500, window.innerHeight * 0.75));
+  updateBackToTop();
+  window.addEventListener('scroll', updateBackToTop, {passive:true});
+  window.addEventListener('resize', updateBackToTop);
+}
+
