@@ -5,7 +5,9 @@
 .hero-stage{position:relative;isolation:isolate;overflow:hidden;background:#102d27;min-height:610px;display:flex;align-items:center;color:#fff}
 .hero-media{position:absolute;inset:0;z-index:-2;background:#102d27}
 .hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;pointer-events:none}
+.hero-media img,.hero-media video{transition:opacity .18s ease}
 .hero-media video{opacity:0}
+.hero-stage.is-playing .hero-media img{opacity:0}
 .hero-stage.is-playing .hero-media video{opacity:1}
 .hero-stage::before{content:"";position:absolute;inset:0;background:rgba(0,13,12,.56);z-index:-1}
 .hero-copy{width:min(1160px,86%);margin:0 auto;padding:80px 0 100px}
@@ -27,11 +29,11 @@
 @media(min-width:1600px){.hero-stage{min-height:690px}.hero-copy{width:min(1400px,86%)}}
 @media(max-width:760px){
 .header{height:72px}
-.hero-stage{display:block;min-height:0;padding-top:56.25vw}
-.hero-media{height:56.25vw;bottom:auto;z-index:0}
-.hero-media img,.hero-media video{object-fit:contain}
+.hero-stage{display:grid;grid-template-rows:auto auto;min-height:0;padding-top:0}
+.hero-media{position:relative;inset:auto;grid-row:1;grid-column:1;width:100%;height:auto;aspect-ratio:16/9;z-index:0}
+.hero-media img,.hero-media video{object-fit:cover}
 .hero-stage::before{display:none}
-.hero-copy{position:relative;width:auto;margin:0;padding:29px 6% 32px}
+.hero-copy{position:relative;grid-row:2;grid-column:1;width:auto;margin:0;padding:29px 6% 32px}
 .hero-copy .eyebrow{font-size:10px}
 .hero h1{font-size:clamp(36px,9.7vw,58px);margin:15px 0 18px}
 .hero .intro{font-size:15px}
@@ -39,7 +41,7 @@
 .hero-actions{gap:18px;margin-top:24px}
 .hero-secondary{font-size:13px;padding:10px 0}
 .hero .address{margin-top:20px;font-size:11px}
-.hero-caption{top:calc(56.25vw - 54px);bottom:auto;left:6%;right:6%;justify-content:flex-end}
+.hero-caption{position:relative;grid-row:1;grid-column:1;align-self:end;z-index:1;top:auto;bottom:auto;left:auto;right:auto;margin:0 6% 17px;justify-content:flex-end}
 .hero-caption>span{display:none}
 .hero .services{padding:0 6%;margin:0}
 .hero .service-heading{padding:17px 0}
