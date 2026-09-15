@@ -8,10 +8,11 @@ const source = path.dirname(here);
 const output = path.resolve(process.argv[2] || path.join(source, 'dist', 'wordpress'));
 const target = path.join(output, 'vcac-landing-page');
 await fs.mkdir(path.join(target, 'site', 'assets'), {recursive:true});
-for (const name of ['vcac-landing-page.php', 'page-template.php']) {
+const phpFiles = ['vcac-landing-page.php', 'page-template.php', 'content-feed.php', 'calendar-adapter.php'];
+for (const name of phpFiles) {
   await fs.copyFile(path.join(here, 'vcac-landing-page', name), path.join(target, name));
 }
-const files = ['index.html','style.css','hero.css','theme.css','readability.css','app.js','languages.js',
+const files = ['index.html','style.css','hero.css','theme.css','readability.css','community.css','app.js','languages.js','community.js',
   'assets/congregation.jpg','assets/logo.png','assets/questrial-regular.ttf'];
 const manifest = {builtAt:new Date().toISOString(), files:{}};
 for (const name of files) {
@@ -31,7 +32,7 @@ for (const name of files) {
   await fs.writeFile(path.join(target, 'site', destination), bytes);
   manifest.files['site/' + destination] = crypto.createHash('sha256').update(bytes).digest('hex');
 }
-for (const name of ['vcac-landing-page.php','page-template.php']) {
+for (const name of phpFiles) {
   manifest.files[name] = crypto.createHash('sha256').update(await fs.readFile(path.join(target,name))).digest('hex');
 }
 manifest.build = crypto.createHash('sha256').update(JSON.stringify(manifest.files)).digest('hex').slice(0,12);

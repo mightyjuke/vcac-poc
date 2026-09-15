@@ -2,7 +2,7 @@
 /**
  * Plugin Name: VCAC Landing Page
  * Description: An opt-in standalone page template serving the locally maintained VCAC landing page.
- * Version: 0.3.3
+ * Version: 0.4.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  */
@@ -13,6 +13,9 @@ defined('ABSPATH') || exit;
 
 const TEMPLATE = 'vcac-landing-page.php';
 const VIDEO_META_KEY = '_vcac_landing_video_id';
+
+require_once __DIR__ . '/calendar-adapter.php';
+require_once __DIR__ . '/content-feed.php';
 
 function allowed_site() {
     return !is_multisite() || is_main_site();
@@ -37,6 +40,22 @@ add_filter('template_include', function ($template) {
     $file = __DIR__ . '/page-template.php';
     return is_readable(__DIR__ . '/site/document.php') ? $file : $template;
 }, 99);
+
+add_filter('query_vars', function ($vars) {
+    $vars[] = 'vcac_view';
+    $vars[] = 'vcac_lang';
+    return $vars;
+});
+
+add_action('template_redirect', function () {
+    if (!selected_page() || post_password_required()) {
+        return;
+    }
+    if (!defined('DONOTCACHEPAGE')) {
+        define('DONOTCACHEPAGE', true);
+    }
+    nocache_headers();
+}, 0);
 
 add_action('add_meta_boxes_page', function () {
     if (allowed_site()) {
@@ -149,7 +168,7 @@ function render() {
     $html = substr($html, strlen($guard));
     $base = plugin_dir_url(__FILE__) . 'site/';
     $manifest = json_decode(file_get_contents(__DIR__ . '/build-manifest.json'), true);
-    $version = isset($manifest['build']) ? $manifest['build'] : '0.3.3';
+    $version = isset($manifest['build']) ? $manifest['build'] : '0.4.0';
 
     $video_id = absint(get_post_meta(get_queried_object_id(), VIDEO_META_KEY, true));
     $video_url = $video_id && 0 === strpos((string) get_post_mime_type($video_id), 'video/')
@@ -158,14 +177,24 @@ function render() {
     $html = str_replace('%%VCAC_HERO_VIDEO_URL%%', esc_url((string) $video_url), $html);
 
     // Replace local relative asset attributes without changing the source layout.
-    foreach (array('style.css', 'hero.css', 'theme.css', 'readability.css', 'app.js', 'languages.js') as $asset) {
+    foreach (array('style.css', 'hero.css', 'theme.css', 'readability.css', 'app.js', 'languages.js', 'community.css', 'community.js') as $asset) {
         $html = str_replace('="' . $asset . '"', '="' . esc_url($base . $asset . '?ver=' . $version) . '"', $html);
     }
     $html = str_replace('="assets/', '="' . esc_url($base . 'assets/'), $html);
     $network = is_multisite() ? network_home_url('/') : home_url('/');
-    foreach (array('cantonese/', 'english/', 'mandarin/', 'english/visitors/') as $path) {
-        $html = str_replace('href="https://www.vcac.ca/' . $path . '"', 'href="' . esc_url($network . $path) . '"', $html);
+    $feed = feed_payload();
+    foreach (array('en' => 'english', 'zh-Hant' => 'cantonese', 'zh-Hans' => 'mandarin') as $locale => $branch) {
+        foreach (array('home' => '', 'visitors' => 'visitors/', 'events' => 'events/', 'updates' => 'about/announcements/') as $key => $suffix) {
+            $target = !empty($feed['sources'][$locale][$key]) ? $feed['sources'][$locale][$key] : $network . $branch . '/' . $suffix;
+            $html = str_replace('href="https://www.vcac.ca/' . $branch . '/' . $suffix . '"', 'href="' . esc_url($target) . '"', $html);
+        }
     }
+    $payload = wp_json_encode($feed, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
+    $html = str_replace(
+        '<!--VCAC_FEED_DATA-->',
+        '<script type="application/json" id="vcac-feed-data">' . ($payload ? $payload : '{}') . '</script>',
+        $html
+    );
 
     // Keep the original title and language switch; do not duplicate <title>.
     remove_action('wp_head', '_wp_render_title_tag', 1);
