@@ -2,7 +2,7 @@
 /**
  * Plugin Name: VCAC Landing Page
  * Description: An opt-in standalone page template serving the locally maintained VCAC landing page.
- * Version: 0.3.2
+ * Version: 0.3.3
  * Requires at least: 6.0
  * Requires PHP: 7.4
  */
@@ -149,7 +149,7 @@ function render() {
     $html = substr($html, strlen($guard));
     $base = plugin_dir_url(__FILE__) . 'site/';
     $manifest = json_decode(file_get_contents(__DIR__ . '/build-manifest.json'), true);
-    $version = isset($manifest['build']) ? $manifest['build'] : '0.3.2';
+    $version = isset($manifest['build']) ? $manifest['build'] : '0.3.3';
 
     $video_id = absint(get_post_meta(get_queried_object_id(), VIDEO_META_KEY, true));
     $video_url = $video_id && 0 === strpos((string) get_post_mime_type($video_id), 'video/')
