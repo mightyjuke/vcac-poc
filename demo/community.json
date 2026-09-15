@@ -1,0 +1,268 @@
+{
+  "version": "0.4.4",
+  "sources": {
+    "en": {
+      "home": "https://www.vcac.ca/english/",
+      "visitors": "https://www.vcac.ca/english/visitors/",
+      "events": "https://www.vcac.ca/english/events/",
+      "updates": "https://www.vcac.ca/english/about/announcements/"
+    },
+    "zh-Hant": {
+      "home": "https://www.vcac.ca/cantonese/",
+      "visitors": "https://www.vcac.ca/cantonese/visitors/",
+      "events": "https://www.vcac.ca/cantonese/events/",
+      "updates": "https://www.vcac.ca/cantonese/about/announcements/"
+    },
+    "zh-Hans": {
+      "home": "https://www.vcac.ca/mandarin/",
+      "visitors": "https://www.vcac.ca/mandarin/visitors/",
+      "events": "https://www.vcac.ca/mandarin/events/",
+      "updates": "https://www.vcac.ca/mandarin/about/announcements/"
+    }
+  },
+  "locales": {
+    "en": {
+      "status": "ok",
+      "community": [
+        {
+          "id": "demo-en-0",
+          "title": "Alpha Course",
+          "summary": "Explore questions about life, faith and God over dinner.",
+          "url": "https://www.vcac.ca/english/events/",
+          "image": "assets/congregation.jpg",
+          "imageAlt": "VCAC Knight Street Church",
+          "language": "en",
+          "start": 1790127000,
+          "end": null,
+          "kind": "event",
+          "schedule": "",
+          "status": "open",
+          "imageFit": "cover",
+          "imagePositionX": 15,
+          "imagePositionY": 85
+        },
+        {
+          "id": "demo-en-1",
+          "title": "Baby Circle Time",
+          "summary": "A welcoming space for babies and their parents or caregivers.",
+          "url": "https://www.vcac.ca/english/events/",
+          "image": "",
+          "imageAlt": "VCAC Knight Street Church",
+          "language": "en",
+          "start": null,
+          "end": null,
+          "kind": "programme",
+          "schedule": "Regular programme — see details",
+          "status": "open"
+        },
+        {
+          "id": "demo-en-2",
+          "title": "English Corner",
+          "summary": "Practise conversation and meet people from the community.",
+          "url": "https://www.vcac.ca/english/events/",
+          "image": "",
+          "imageAlt": "VCAC Knight Street Church",
+          "language": "en",
+          "start": null,
+          "end": null,
+          "kind": "programme",
+          "schedule": "Regular programme — see details",
+          "status": "open"
+        }
+      ],
+      "updates": [
+        {
+          "id": "u-en-0",
+          "title": "Welcome this Sunday",
+          "summary": "Find service times and plan your first visit.",
+          "url": "https://www.vcac.ca/english/about/announcements/",
+          "published": 1789344000,
+          "language": "en",
+          "image": "assets/congregation.jpg",
+          "imageAlt": "VCAC Knight Street Church",
+          "imageFit": "contain",
+          "imagePositionX": 15,
+          "imagePositionY": 85
+        },
+        {
+          "id": "u-en-1",
+          "title": "Community programmes",
+          "summary": "Connect with neighbours through our regular activities.",
+          "url": "https://www.vcac.ca/english/about/announcements/",
+          "published": 1789257600,
+          "language": "en"
+        },
+        {
+          "id": "u-en-2",
+          "title": "Stay connected",
+          "summary": "Read the latest information from the English congregation.",
+          "url": "https://www.vcac.ca/english/about/announcements/",
+          "published": 1789171200,
+          "language": "en"
+        }
+      ]
+    },
+    "zh-Hant": {
+      "status": "ok",
+      "community": [
+        {
+          "id": "demo-zh-Hant-0",
+          "title": "啟發輕鬆夜",
+          "summary": "在輕鬆的晚餐聚會中，一起探索人生、信仰與上帝。",
+          "url": "https://www.vcac.ca/cantonese/events/",
+          "image": "assets/congregation.jpg",
+          "imageAlt": "VCAC Knight Street Church",
+          "language": "zh-Hant",
+          "start": 1790127000,
+          "end": null,
+          "kind": "event",
+          "schedule": "",
+          "status": "open",
+          "imageFit": "cover",
+          "imagePositionX": 15,
+          "imagePositionY": 85
+        },
+        {
+          "id": "demo-zh-Hant-1",
+          "title": "親子寶寶圈",
+          "summary": "歡迎嬰幼兒及家長或照顧者，一起遊戲與交流。",
+          "url": "https://www.vcac.ca/cantonese/events/",
+          "image": "",
+          "imageAlt": "VCAC Knight Street Church",
+          "language": "zh-Hant",
+          "start": null,
+          "end": null,
+          "kind": "programme",
+          "schedule": "恆常活動 — 查看詳情",
+          "status": "open"
+        },
+        {
+          "id": "demo-zh-Hant-2",
+          "title": "英文會話班",
+          "summary": "練習日常英語，認識社區的新朋友。",
+          "url": "https://www.vcac.ca/cantonese/events/",
+          "image": "",
+          "imageAlt": "VCAC Knight Street Church",
+          "language": "zh-Hant",
+          "start": null,
+          "end": null,
+          "kind": "programme",
+          "schedule": "恆常活動 — 查看詳情",
+          "status": "open"
+        }
+      ],
+      "updates": [
+        {
+          "id": "u-zh-Hant-0",
+          "title": "這個主日，歡迎你來",
+          "summary": "查看崇拜時間，計劃你的第一次到訪。",
+          "url": "https://www.vcac.ca/cantonese/about/announcements/",
+          "published": 1789344000,
+          "language": "zh-Hant",
+          "image": "assets/congregation.jpg",
+          "imageAlt": "VCAC Knight Street Church",
+          "imageFit": "contain",
+          "imagePositionX": 15,
+          "imagePositionY": 85
+        },
+        {
+          "id": "u-zh-Hant-1",
+          "title": "社區活動",
+          "summary": "透過恆常活動，與鄰舍建立聯繫。",
+          "url": "https://www.vcac.ca/cantonese/about/announcements/",
+          "published": 1789257600,
+          "language": "zh-Hant"
+        },
+        {
+          "id": "u-zh-Hant-2",
+          "title": "與堂會保持聯繫",
+          "summary": "查看粵語事工的最新消息。",
+          "url": "https://www.vcac.ca/cantonese/about/announcements/",
+          "published": 1789171200,
+          "language": "zh-Hant"
+        }
+      ]
+    },
+    "zh-Hans": {
+      "status": "ok",
+      "community": [
+        {
+          "id": "demo-zh-Hans-0",
+          "title": "启发轻松夜",
+          "summary": "在轻松的晚餐聚会中，一起探索人生、信仰与上帝。",
+          "url": "https://www.vcac.ca/mandarin/events/",
+          "image": "assets/congregation.jpg",
+          "imageAlt": "VCAC Knight Street Church",
+          "language": "zh-Hans",
+          "start": 1790127000,
+          "end": null,
+          "kind": "event",
+          "schedule": "",
+          "status": "open",
+          "imageFit": "cover",
+          "imagePositionX": 15,
+          "imagePositionY": 85
+        },
+        {
+          "id": "demo-zh-Hans-1",
+          "title": "亲子宝宝圈",
+          "summary": "欢迎婴幼儿及家长或照顾者，一起游戏与交流。",
+          "url": "https://www.vcac.ca/mandarin/events/",
+          "image": "",
+          "imageAlt": "VCAC Knight Street Church",
+          "language": "zh-Hans",
+          "start": null,
+          "end": null,
+          "kind": "programme",
+          "schedule": "常规活动 — 查看详情",
+          "status": "open"
+        },
+        {
+          "id": "demo-zh-Hans-2",
+          "title": "英文会话班",
+          "summary": "练习日常英语，认识社区的新朋友。",
+          "url": "https://www.vcac.ca/mandarin/events/",
+          "image": "",
+          "imageAlt": "VCAC Knight Street Church",
+          "language": "zh-Hans",
+          "start": null,
+          "end": null,
+          "kind": "programme",
+          "schedule": "常规活动 — 查看详情",
+          "status": "open"
+        }
+      ],
+      "updates": [
+        {
+          "id": "u-zh-Hans-0",
+          "title": "这个主日，欢迎你来",
+          "summary": "查看崇拜时间，计划你的第一次到访。",
+          "url": "https://www.vcac.ca/mandarin/about/announcements/",
+          "published": 1789344000,
+          "language": "zh-Hans",
+          "image": "assets/congregation.jpg",
+          "imageAlt": "VCAC Knight Street Church",
+          "imageFit": "contain",
+          "imagePositionX": 15,
+          "imagePositionY": 85
+        },
+        {
+          "id": "u-zh-Hans-1",
+          "title": "社区活动",
+          "summary": "通过常规活动，与邻舍建立联系。",
+          "url": "https://www.vcac.ca/mandarin/about/announcements/",
+          "published": 1789257600,
+          "language": "zh-Hans"
+        },
+        {
+          "id": "u-zh-Hans-2",
+          "title": "与堂会保持联系",
+          "summary": "查看国语事工的最新消息。",
+          "url": "https://www.vcac.ca/mandarin/about/announcements/",
+          "published": 1789171200,
+          "language": "zh-Hans"
+        }
+      ]
+    }
+  }
+}
