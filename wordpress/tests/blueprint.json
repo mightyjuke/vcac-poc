@@ -1,0 +1,15 @@
+{
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "7.0.4"
+  },
+  "steps": [
+    {
+      "step": "enableMultisite"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php ini_set(\"display_errors\",\"1\"); register_shutdown_function(function(){file_put_contents(\"/test-output/shutdown.json\",json_encode(error_get_last()));}); try {require \"/vcac-tests/integration.php\";} catch (Throwable $e) {file_put_contents(\"/test-output/error.txt\",(string)$e); throw $e;}"
+    }
+  ]
+}
