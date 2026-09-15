@@ -2,7 +2,7 @@
 /**
  * Plugin Name: VCAC Landing Page
  * Description: An opt-in standalone page template serving the locally maintained VCAC landing page.
- * Version: 0.4.3
+ * Version: 0.4.4
  * Requires at least: 6.0
  * Requires PHP: 7.4
  */
@@ -15,6 +15,7 @@ const TEMPLATE = 'vcac-landing-page.php';
 const VIDEO_META_KEY = '_vcac_landing_video_id';
 
 require_once __DIR__ . '/calendar-adapter.php';
+require_once __DIR__ . '/image-crop.php';
 require_once __DIR__ . '/content-feed.php';
 
 function allowed_site() {

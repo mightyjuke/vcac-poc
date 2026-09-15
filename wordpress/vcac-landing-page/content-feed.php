@@ -4,7 +4,7 @@ namespace VCAC\LandingPage;
 
 defined('ABSPATH') || exit;
 
-const FEED_VERSION = '0.4.3';
+const FEED_VERSION = '0.4.4';
 const FEED_SOURCE_OPTION = 'vcac_feed_source_sites';
 const LISTING_META_KEY = '_vcac_listing';
 const AUDIENCE_META_KEY = '_vcac_audience';
@@ -199,6 +199,7 @@ function render_listing_box($post) {
     <p><label for="vcac-review-until"><strong>Review by</strong></label><br>
         <input type="date" id="vcac-review-until" name="vcac_review_until" value="<?php echo esc_attr(get_post_meta($post->ID, REVIEW_UNTIL_META_KEY, true)); ?>"><br><span class="description"><?php echo 'post' === $post->post_type ? 'Required and must be today or later for an ongoing community programme. ' : ''; ?>After this date, the listing is hidden until reviewed. Optional for updates.</span></p>
     <?php
+    render_card_image_settings($post);
 }
 
 function sanitize_listing_choice($value) {
@@ -524,6 +525,9 @@ function build_feed_record($post, $site_id, $locale, $details, $listing, $now) {
         'title' => wp_strip_all_tags(get_the_title($post)),
         'summary' => feed_record_summary($post),
         'url' => $action_url ? $action_url : get_permalink($post),
+        'imageFit' => card_image_settings($post->ID)['imageFit'],
+        'imagePositionX' => card_image_settings($post->ID)['imagePositionX'],
+        'imagePositionY' => card_image_settings($post->ID)['imagePositionY'],
         'image' => $image ? $image : '',
         'imageAlt' => $thumbnail_id ? sanitize_text_field(get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true)) : '',
         'language' => $locale,

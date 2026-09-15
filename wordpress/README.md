@@ -1,6 +1,6 @@
-# VCAC Landing Page 0.4.3
+# VCAC Landing Page 0.4.4
 
-This release adds matching image cards for Community Services & Events and Latest Updates: three columns on desktop, two on tablets, one on phones; rounded white cards, subtle shadows, and larger readable text. Featured images are reused without cropping posters. Missing images use a text-only card.
+This release adds matching image cards for Community Services & Events and Latest Updates: three columns on desktop, two on tablets, one on phones; rounded white cards, subtle shadows, and larger readable text. Featured images now fill the card by default. Staff can adjust the crop position or choose Show full image for posters. Missing images use a text-only card.
 
 It also retains the 0.4.2 fix for ministry listings disappearing when Polylang is active on the main landing site but inactive on a ministry site. Feed queries explicitly disable Polylang's current-language constraint because the configured source site already determines the language. Other WordPress query filters and existing eligibility checks remain enabled. No post translations or remote settings need changing.
 
@@ -8,13 +8,25 @@ One plugin provides the landing-page template, community directory, and ministry
 
 ## Upgrade for a staging preview
 
-1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.3.zip and replace the existing VCAC Landing Page plugin.
-2. **Network Activate VCAC Landing Page.** Version 0.4.3 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
+1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.4.zip and replace the existing VCAC Landing Page plugin.
+2. **Network Activate VCAC Landing Page.** Version 0.4.4 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
 3. On the main site, open **Settings → VCAC Content Feed**. Confirm English → English site, Traditional Chinese → Cantonese, Simplified Chinese → Mandarin. Defaults detect site paths, not assumed numeric IDs. Save only if the mapping needs changing.
 4. Preview the existing separate page assigned the **VCAC Landing Page** template. Its selected Media Library video remains selected; the church-building image remains the default fallback. No MP4 is in the ZIP.
 5. Publish a test listing on a ministry staging site as below, then refresh the landing preview. Test each language and the directory. A homepage rollout needs a separate team decision.
 
 The existing Community Services & Events page is not replaced. “View all events” opens this landing template in directory mode (?vcac_view=community), using the same feed. Changing existing community-page navigation remains a separate step.
+
+## Adjust the featured-image crop (0.4.4)
+
+Open the event or post in its ministry site, then find **VCAC Landing Page Listing → Landing-page card image**.
+
+1. Set the normal WordPress featured image.
+2. Choose **Fill card (crop edges)** for a consistent 16:9 image.
+3. Move the horizontal and vertical sliders while watching the preview. Only the direction with cropped edges moves; **Centre crop** resets both to 50%.
+4. For a poster, choose **Show full image (best for posters)** to preserve all edges. Switching back to Fill restores the saved position.
+5. Click the normal **Update** or **Publish** button, then refresh the landing preview.
+
+Cropping is specific to this listing on the landing page and directory. It does not edit the uploaded file or change the ministry page's featured image. Existing listings default to centred fill after upgrading; review tall posters and select Show full image where needed. Controls are provided on both ordinary Posts and MEC events. They do not change which listings qualify for the feed.
 
 ## Staff: publish once in your ministry
 

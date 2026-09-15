@@ -54,6 +54,9 @@
     if (imageUrl) {
       const media=element('div','card-media');
       const img = element('img'); img.src=imageUrl; img.alt=item.imageAlt || ''; img.loading='lazy'; img.decoding='async'; img.width=600; img.height=338;
+      img.style.objectFit=item.imageFit==='contain'?'contain':'cover';
+      const position=value=>value!==null && value!=='' && Number.isFinite(Number(value))?Math.max(0,Math.min(100,Number(value))):50;
+      img.style.objectPosition=item.imageFit==='contain'?'50% 50%':`${position(item.imagePositionX)}% ${position(item.imagePositionY)}%`;
       img.addEventListener('error',()=>media.remove(),{once:true}); media.append(img); article.append(media);
     }
     const body = element('div','card-content');

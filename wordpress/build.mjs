@@ -8,7 +8,7 @@ const source = path.dirname(here);
 const output = path.resolve(process.argv[2] || path.join(source, 'dist', 'wordpress'));
 const target = path.join(output, 'vcac-landing-page');
 await fs.mkdir(path.join(target, 'site', 'assets'), {recursive:true});
-const phpFiles = ['vcac-landing-page.php', 'page-template.php', 'content-feed.php', 'calendar-adapter.php'];
+const phpFiles = ['vcac-landing-page.php', 'page-template.php', 'content-feed.php', 'calendar-adapter.php', 'image-crop.php', 'admin-crop.js', 'admin-crop.css'];
 for (const name of phpFiles) {
   await fs.copyFile(path.join(here, 'vcac-landing-page', name), path.join(target, name));
 }
