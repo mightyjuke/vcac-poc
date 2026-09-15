@@ -11,7 +11,7 @@ title:'歡迎你 · 溫哥華華人宣道會',skip:'跳至主要內容',church:'
 title:'欢迎你 · 温哥华华人宣道会',skip:'跳至主要内容',church:'溫哥華華人宣道會',headerChurch:'溫哥華華人宣道會',identity:'温哥华华人宣道会 · 乃街教会',plan:'计划到访',vision:'在基督里合一<br><em>活出神的使命</em>',mission:'我们教会的使命是敬拜耶稣、装备门徒、建立教会和传扬整全福音。',join:'这个主日，欢迎你来',address:'温哥华乃街 3330 号',sunday:'主日崇拜',place:'这里有你的位置。',english:'英语',cantonese:'粤语',mandarin:'国语',am:'上午',englishLink:'英语事工',cantoneseLink:'粤语事工',mandarinLink:'国语事工',first:'第一次参加主日崇拜',welcome:'我们期待<br><em>与你见面。</em>',invitation:'不必等到所有疑问都有答案。欢迎你带着真实的自己来，让我们一起踏出下一步。',expect:'到访须知（英文）',home:'欢迎来到我们当中。',find:'教会地址',fullAddress:'3330 Knight Street<br>温哥华，不列颠哥伦比亚省 V5N 3K8',worship:'主日崇拜时间',times:'英语 — 上午 9:30<br>粤语 — 上午 8:00 及 11:15<br>国语 — 上午 11:15',parking:'停车信息',parkingInfo:'可使用教会停车场及附近街道的停车位。请遵守路旁标志，并勿阻塞邻居的车道。',directions:'查看路线',local:'网站设计预览 · 并非正式网站',homeLabel:'返回 VCAC 首页',navigation:'主要导航',languageLabel:'显示语言',status:'页面语言：简体中文（国语）'
 }
 };
-function setLanguage(language, announce = true) {
+function setLanguage(language, announce = true, remember = true) {
   if (!Object.hasOwn(translations, language)) language = 'en';
   const copy = translations[language];
   document.documentElement.lang = language;
@@ -24,12 +24,32 @@ function setLanguage(language, announce = true) {
   document.querySelector('.header nav').setAttribute('aria-label', copy.navigation);
   document.querySelector('.language-picker').setAttribute('aria-label', copy.languageLabel);
   if (announce) document.querySelector('#language-status').textContent = copy.status;
-  try { localStorage.setItem('vcac-display-language', language); } catch { /* Works without storage too. */ }
+  if (remember) {
+    try { localStorage.setItem('vcac-display-language', language); } catch { /* Works without storage too. */ }
+  }
 }
 document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language)));
-let savedLanguage = 'en';
-try { savedLanguage = localStorage.getItem('vcac-display-language') || 'en'; } catch { /* Default to English. */ }
-setLanguage(savedLanguage, false);
+
+function detectBrowserLanguage() {
+  const preferences = navigator.languages?.length ? navigator.languages : [navigator.language || 'en'];
+  for (const preference of preferences) {
+    const tag = String(preference).replace(/_/g, '-').toLowerCase();
+    if (tag.startsWith('yue') || /^(zh|cmn)(-|$)/.test(tag)) {
+      if (/(^|-)(hant|hk|tw|mo)(-|$)/.test(tag) || tag.startsWith('yue')) return 'zh-Hant';
+      if (/(^|-)(hans|cn|sg)(-|$)/.test(tag)) return 'zh-Hans';
+      try {
+        return new Intl.Locale(tag).maximize().script === 'Hant' ? 'zh-Hant' : 'zh-Hans';
+      } catch {
+        return 'zh-Hans';
+      }
+    }
+  }
+  return 'en';
+}
+
+let savedLanguage = null;
+try { savedLanguage = localStorage.getItem('vcac-display-language'); } catch { /* Detect from the browser instead. */ }
+setLanguage(Object.hasOwn(translations, savedLanguage) ? savedLanguage : detectBrowserLanguage(), false, false);
 
 
 

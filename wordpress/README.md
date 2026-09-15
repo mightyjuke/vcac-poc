@@ -2,7 +2,7 @@
 
 This package adds **VCAC Landing Page** to the page-template selector. It keeps the active The7 theme and all existing pages. It does not create pages, change the homepage, replace a theme, alter Polylang settings, or run migrations on activation. In Multisite it offers the template only on the network main site.
 
-The landing page's HTML, CSS, JavaScript and translation buttons remain the design source. The video comes from WordPress's Media Library and is not included in the plugin ZIP. WordPress page content is not rendered when this template is selected. This version deliberately preserves the current design and does not convert it to WPBakery/Polylang.
+The landing page's HTML, CSS, JavaScript and translation buttons remain the design source. On a visitor's first visit, the page uses the browser's preferred language to select English, Traditional Chinese or Simplified Chinese. A manual selection is remembered for later visits. The video comes from WordPress's Media Library and is not included in the plugin ZIP. WordPress page content is not rendered when this template is selected. This version deliberately preserves the current design and does not convert it to WPBakery/Polylang.
 
 ## First installation (network administrator)
 
