@@ -2,7 +2,7 @@
 /**
  * Plugin Name: VCAC Landing Page
  * Description: An opt-in standalone page template serving the locally maintained VCAC landing page.
- * Version: 0.4.7
+ * Version: 0.4.9
  * Requires at least: 6.0
  * Requires PHP: 7.4
  */
@@ -17,6 +17,7 @@ const VIDEO_META_KEY = '_vcac_landing_video_id';
 require_once __DIR__ . '/calendar-adapter.php';
 require_once __DIR__ . '/image-crop.php';
 require_once __DIR__ . '/content-feed.php';
+require_once __DIR__ . '/emergency.php';
 
 function allowed_site() {
     return !is_multisite() || is_main_site();
@@ -172,7 +173,7 @@ function render() {
     $html = str_replace('%%VCAC_HERO_VIDEO_URL%%', esc_url((string) $video_url), $html);
 
     // Replace local relative asset attributes without changing the source layout.
-    foreach (array('style.css', 'hero.css', 'theme.css', 'readability.css', 'app.js', 'languages.js', 'community.css', 'community.js') as $asset) {
+    foreach (array('style.css', 'hero.css', 'theme.css', 'readability.css', 'app.js', 'languages.js', 'community.css', 'community.js', 'emergency.css', 'emergency.js') as $asset) {
         $html = str_replace('="' . $asset . '"', '="' . esc_url($base . $asset . '?ver=' . $version) . '"', $html);
     }
     $html = str_replace('="assets/', '="' . esc_url($base . 'assets/'), $html);
@@ -190,6 +191,8 @@ function render() {
         '<script type="application/json" id="vcac-feed-data">' . ($payload ? $payload : '{}') . '</script>',
         $html
     );
+
+    $html = str_replace('<!--VCAC_EMERGENCY-->', emergency_markup(), $html);
 
     // Keep the original title and language switch; do not duplicate <title>.
     remove_action('wp_head', '_wp_render_title_tag', 1);

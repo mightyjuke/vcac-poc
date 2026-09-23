@@ -107,6 +107,7 @@ $hero_css=file_get_contents(WP_PLUGIN_DIR.'/vcac-landing-page/site/hero.css');
 check_vcac(strpos($hero_css,'.hero-stage.is-playing .hero-media img{opacity:0}')!==false,'Playing video hides the fallback image');
 check_vcac(strpos($hero_css,'aspect-ratio:16/9')!==false&&strpos($hero_css,'object-fit:contain')===false,'Mobile hero uses its own 16:9 width and cover crop');
 check_vcac(substr_count($html,'<main id="main">')===1,'Only one main landmark is rendered');
+require __DIR__ . '/emergency.php';
 file_put_contents('/test-output/rendered.html',$html);
 file_put_contents('/test-output/feed.json',wp_json_encode(VCAC\LandingPage\feed_payload(),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE));
 file_put_contents('/test-output/results.json',wp_json_encode(array('passed'=>true,'wordpress'=>get_bloginfo('version'),'php'=>PHP_VERSION,'checks'=>$checks,'landing_id'=>$landing),JSON_PRETTY_PRINT));

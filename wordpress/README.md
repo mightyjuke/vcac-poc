@@ -1,4 +1,13 @@
-# VCAC Landing Page 0.4.7
+# VCAC Landing Page 0.4.9
+
+0.4.9 makes the desktop hero taller in landscape windows, filling the first screen through the bottom of the Sunday worship strip when the content fits. It measures the actual header, language bar, notice and worship strip, and adjusts when the window or language changes. Short windows and emergency notices can require scrolling so content stays readable. Portrait desktop windows retain a content-sized hero instead of stretching to the monitor height. Mobile keeps its existing 16:9 video above the text.
+
+The video and fallback image continue to fill the same frame. Some cropping remains because the desktop hero is not always 16:9; this update does not reframe the uploaded video or remove the text overlay. Your selected Media Library video and existing settings are retained. The approved layout was tested locally in landscape, portrait, mobile and all three display languages, including orientation changes.
+
+0.4.8 adds a staff-controlled emergency announcement, initially off. Open **Main site dashboard → Emergency notice** as an Editor or Administrator. Choose yellow or red, write a heading and message, optionally paste a published Announcement link, choose a future expiry in Vancouver time, enable the banner, and Save notice. A live preview supports all three display languages. Optional Chinese translations fall back to the complete English notice when absent; no automatic translation is performed.
+
+The notice appears above the header on pages using the VCAC Landing Page template and its events directory. It does not change ministry-site pages. The optional link is shared across languages. The banner cannot be dismissed by visitors. Expiry is enforced on page requests and by a timer on open pages; newly saved changes need a page refresh. The template sends no-cache headers, but an external cache must also bypass these pages for urgent updates to be reliable. Staff can disable the notice early without deleting its text. No extra plugin is required.
+
 
 0.4.7 fixes homepage refreshes after choosing a display language. The language picker now remembers the choice in browser storage without registering or adding `vcac_lang` as a WordPress query variable. Existing `?vcac_lang=en`, `?vcac_lang=zh-Hant`, and `?vcac_lang=zh-Hans` links are still read once for compatibility, then cleaned from the address bar after the landing page loads. Community-directory links retain only their `vcac_view=community` state.
 
@@ -14,8 +23,8 @@ One plugin provides the landing-page template, community directory, and ministry
 
 ## Upgrade for a staging preview
 
-1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.7.zip and replace the existing VCAC Landing Page plugin.
-2. **Network Activate VCAC Landing Page.** Version 0.4.7 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
+1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.9.zip and replace the existing VCAC Landing Page plugin.
+2. **Keep VCAC Landing Page network activated.** Version 0.4.9 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
 3. On the main site, open **Settings → VCAC Content Feed**. Confirm English → English site, Traditional Chinese → Cantonese, Simplified Chinese → Mandarin. Defaults detect site paths, not assumed numeric IDs. Save only if the mapping needs changing.
 4. Preview the existing separate page assigned the **VCAC Landing Page** template. Its selected Media Library video remains selected; the church-building image remains the default fallback. No MP4 is in the ZIP.
 5. Publish a test listing on a ministry staging site as below, then refresh the landing preview. Test each language and the directory. A homepage rollout needs a separate team decision.
