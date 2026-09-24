@@ -1,4 +1,6 @@
-# VCAC Landing Page 0.4.9
+# VCAC Landing Page 0.4.10
+
+0.4.10 opens the Cantonese, English and Mandarin links in the Sunday worship strip in the current browser tab. This applies in all three display languages.
 
 0.4.9 makes the desktop hero taller in landscape windows, filling the first screen through the bottom of the Sunday worship strip when the content fits. It measures the actual header, language bar, notice and worship strip, and adjusts when the window or language changes. Short windows and emergency notices can require scrolling so content stays readable. Portrait desktop windows retain a content-sized hero instead of stretching to the monitor height. Mobile keeps its existing 16:9 video above the text.
 
@@ -23,8 +25,8 @@ One plugin provides the landing-page template, community directory, and ministry
 
 ## Upgrade for a staging preview
 
-1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.9.zip and replace the existing VCAC Landing Page plugin.
-2. **Keep VCAC Landing Page network activated.** Version 0.4.9 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
+1. Keep the previous ZIP and a normal WordPress backup. In Network Admin → Plugins, upload vcac-landing-page-0.4.10.zip and replace the existing VCAC Landing Page plugin.
+2. **Keep VCAC Landing Page network activated.** Version 0.4.10 needs its publishing controls on the three ministry sites. The landing template remains restricted to the network's main site; ministry pages retain their normal theme.
 3. On the main site, open **Settings → VCAC Content Feed**. Confirm English → English site, Traditional Chinese → Cantonese, Simplified Chinese → Mandarin. Defaults detect site paths, not assumed numeric IDs. Save only if the mapping needs changing.
 4. Preview the existing separate page assigned the **VCAC Landing Page** template. Its selected Media Library video remains selected; the church-building image remains the default fallback. No MP4 is in the ZIP.
 5. Publish a test listing on a ministry staging site as below, then refresh the landing preview. Test each language and the directory. A homepage rollout needs a separate team decision.
